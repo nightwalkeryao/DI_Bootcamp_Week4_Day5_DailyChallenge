@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+    <span></span>
+    <span class="spacer">{{title}}</span>
+    <mat-icon matBadgeColor="accent">books
+    </mat-icon>
+  </mat-toolbar>
+<br>
+<h1 align="center" [ngClass]="bookSize > 0 ? 'display':'hide'">{{bookSize}} book(s) find</h1>
+<div id="search">
+    <input [(ngModel)]="searchString" type="text" name="author" id="author" placeholder="Typing author name to see all books for him" value="Alex Garland">
+    <button type="submit" (click)="onSubmit()">Search</button>
+</div>
+<table id="customers">
+    <thead>
+        <tr>
+            <th>Book title </th>
+            <th>Book Author </th>
+            <th>Book Image</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.title}}</td> 
+            <td>{{book.authors}}</td>
+            <td> 
+                <img [class.preview]="book.previewMode" src={{book.coverImage}} (click) ="onClickImage(book)">
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  
+ 
